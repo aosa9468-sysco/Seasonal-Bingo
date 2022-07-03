@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { SetStateAction, useState } from "react";
+import "./App.css";
+import BingoPanel from "./components/BingoPanel/BingoPanel";
+import Modal from "./components/Modal/Modal";
+import Bingo from "../src/Fixtures/bingo.gif";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+  const [totalScore, setTotalScore] = useState(0);
+
+  const getCurrentScore = (score: SetStateAction<number>) => {
+    setTotalScore(score);
+  };
+
+  const shuffleBingo = () => {
+    window.location.reload();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Modal
+        isShowing={showModal}
+        closeModal={() => setShowModal(false)}
+        shuffleGame={() => shuffleBingo()}
+      >
+        <img className="modal-image" src={Bingo} alt="Merry Christmas" />
+        <h2 className="total-score">Total Bingos: {totalScore}</h2>
+      </Modal>
+      <BingoPanel
+        setModalStatus={setShowModal}
+        getCurrentScore={getCurrentScore}
+      />
     </div>
   );
 }

@@ -1,9 +1,17 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+import BingoPanel from "../src/components/BingoPanel/BingoPanel";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("Test the Bingo Panel Component", () => {
+  test("render the header image", () => {
+    render(<BingoPanel setModalStatus={false} getCurrentScore={2} />);
+    const imageAltText = screen.getByAltText("Christmas bingo Logo");
+    expect(imageAltText).toBeInTheDocument();
+  });
+
+  test("render the id component in Bingo cards", () => {
+    render(<BingoPanel setModalStatus={true} getCurrentScore={2} />);
+    const panelId5 = screen.getByText("5");
+    expect(panelId5).toBeInTheDocument();
+  });
 });

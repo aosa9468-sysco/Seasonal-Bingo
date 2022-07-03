@@ -1,0 +1,66 @@
+.tile {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 0.5em;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgb(3, 43, 42);
+  font-weight: 700;
+  padding: 1em;
+  margin: 0.3em;
+  text-align: center;
+}
+.tile:hover {
+  opacity: 5;
+  transition: 0.3s ease;
+  background-color: rgba(6, 58, 66, 0.2);
+  color: antiquewhite;
+  cursor: pointer;
+}
+
+.tile-number {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 9px;
+}
+.tile-quote {
+  text-align: center;
+  font-size: 9px;
+}
+
+.active {
+  opacity: 5;
+  transition: 0.3s ease;
+  background-color: rgba(6, 58, 66, 0.4);
+  color: antiquewhite;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+@media only screen and (min-width: 550px) {
+  .tile-quote {
+    font-size: 12px;
+  }
+  .tile-number {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 12px;
+  }
+  .tile-quote {
+    text-align: center;
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .tile-quote {
+    font-size: 16px;
+  }
+  .tile:hover {
+    transform: scale(1.1);
+    z-index: 1;
+    box-shadow: 0px 5px 20px -5px #000;
+  }
+}
